@@ -1,5 +1,13 @@
 {/* Icon by Read on freeicons.io    
 */}
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
@@ -25,11 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-dark-1`} style={{ backgroundColor: "#100B26" }}
-      >
-        {children}
-      </body>
+      <ClerkProvider>
+        <body
+          className={`${inter.className} bg-dark-1`} style={{ backgroundColor: "#100B26" }}
+        >
+          {children}
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
